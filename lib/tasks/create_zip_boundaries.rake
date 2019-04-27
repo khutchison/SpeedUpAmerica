@@ -40,7 +40,9 @@ end
 
 def clean_bounds(b)
   temp = b.gsub("POLYGON", "").gsub("(", "").gsub(")", "").gsub("MULTI", "").split(", ")
+  temp2 = Array.new
   bounds = Array.new
-  temp.each {|x| bounds << x.split()}
+  temp.each {|x| temp2 << x.split()}
+  temp2.each { |s| bounds << [s[0].to_f, s[1].to_f]}
   return bounds
 end
